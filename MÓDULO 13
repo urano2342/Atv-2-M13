@@ -1,0 +1,21 @@
+import matplotlib.pyplot as plt
+
+# Definição dos horários (0h - 24h)
+horarios = list(range(25))  # 0 a 24
+
+# Temperaturas fictícias ao longo do dia
+temperaturas = [15, 16, 17, 18, 19, 21, 24, 26, 28, 29, 30, 30, 30, 29, 28, 26, 24, 22, 21, 20, 19, 18, 17, 16, 15]
+
+# Criando o gráfico de linha
+plt.figure(figsize=(10, 5))
+plt.plot(horarios, temperaturas, marker='o', linestyle='-', color='b', label='Temperatura (°C)')
+
+# Personalizando o gráfico
+plt.title('Evolução da Temperatura Durante o Dia')
+plt.xlabel('Horário (h)')
+plt.ylabel('Temperatura (°C)')
+plt.xticks(range(0, 25, 2))  # Exibir rótulos a cada 2 horas
+plt.yticks(range(15, 31, 2)) # Intervalo de temperatura no eixo Y
+plt.grid(True, linestyle='--', alpha=0.6)
+plt.legend()
+plt.show()
