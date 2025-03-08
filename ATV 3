@@ -1,0 +1,38 @@
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# Criando os dados fictícios
+dados = {
+    "Dia": ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"],
+    "Vendas": [1200, 1500, 1700, 1600, 2000, 2500, 2700],
+    "Clientes": [80, 95, 110, 105, 130, 160, 180],
+    "Lucro": [300, 450, 500, 480, 700, 900, 1000]
+}
+
+df = pd.DataFrame(dados)
+
+# Configurando o estilo do Seaborn
+sns.set_style("whitegrid")
+
+# 1️⃣ Gráfico de Barras - Total de Vendas por Dia
+plt.figure(figsize=(8, 5))
+sns.barplot(x="Dia", y="Vendas", data=df, palette="Blues_d")
+plt.title("Total de Vendas por Dia da Semana")
+plt.xlabel("Dia da Semana")
+plt.ylabel("Total de Vendas (R$)")
+plt.show()
+
+# 2️⃣ Gráfico de Dispersão - Número de Clientes vs. Vendas
+plt.figure(figsize=(8, 5))
+sns.scatterplot(x="Clientes", y="Vendas", data=df, color="red", s=100)
+plt.title("Relação entre Clientes e Total de Vendas")
+plt.xlabel("Número de Clientes")
+plt.ylabel("Total de Vendas (R$)")
+plt.show()
+
+# 3️⃣ Heatmap - Correlação entre Vendas, Clientes e Lucro
+plt.figure(figsize=(6, 5))
+sns.heatmap(df[["Vendas", "Clientes", "Lucro"]].corr(), annot=True, cmap="coolwarm", linewidths=0.5)
+plt.title("Correlação entre Vendas, Clientes e Lucro")
+plt.show()
